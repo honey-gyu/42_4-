@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strncpy.c                                          :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/23 12:17:07 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/23 12:19:22 by hyungyki         ###   ########.fr       */
+/*   Created: 2024/04/25 15:54:15 by hyungyki          #+#    #+#             */
+/*   Updated: 2024/04/25 16:44:16 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
+#include <unistd.h>
 
-char	*ft_strncpy(char *dest, const char *src, size_t n)
+void	ft_putendl_fd(char *s, int fd)
 {
-	size_t	i;
-
-	i = 0;
-	while (src[i] != '\0' && i < n)
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	while (i < n)
-	{
-		dest[i] = '\0';
-		i++;
-	}
-	return (dest);
+	if (fd < 0)
+		return ;
+	while (*s)
+		write (fd, s++, 1);
+	write(fd, "\n", 1);
 }
-
+/*
 int	main(void)
 {
-	char	dest[] = "helloworld";
-	char	src[] = "honeygyu";
+	char	s[] = "hello";
 
-	printf("%s\n", ft_strncpy(dest, src, 10));
-}	
+	ft_putendl_fd(s, 1);
+}*/

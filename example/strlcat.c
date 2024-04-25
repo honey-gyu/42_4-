@@ -1,38 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strncpy.c                                          :+:      :+:    :+:   */
+/*   strlcat.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/23 12:17:07 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/23 12:19:22 by hyungyki         ###   ########.fr       */
+/*   Created: 2024/04/23 13:33:42 by hyungyki          #+#    #+#             */
+/*   Updated: 2024/04/23 13:54:49 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
 
-char	*ft_strncpy(char *dest, const char *src, size_t n)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	size_t	i;
+	size_t	j;
+	size_t	len;
 
 	i = 0;
-	while (src[i] != '\0' && i < n)
-	{
-		dest[i] = src[i];
+	j = 0;
+	len = 0;
+	while (dst[i] != '\0')
 		i++;
-	}
-	while (i < n)
+	while (src[len] != '\0')
+		len++;
+	if (size <= i)
+		len += size;
+	else
+		len += i;
+	while (src[j] != '\0' && i + 1 < size)
 	{
-		dest[i] = '\0';
+		dst[i] = src[j];
 		i++;
+		j++;
 	}
-	return (dest);
+	dst[i] = '\0';
+	return (len);
 }
 
 int	main(void)
 {
-	char	dest[] = "helloworld";
-	char	src[] = "honeygyu";
-
-	printf("%s\n", ft_strncpy(dest, src, 10));
-}	
+	char	dst[] = "helloworld";
+	char

@@ -1,38 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strncpy.c                                          :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/23 12:17:07 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/23 12:19:22 by hyungyki         ###   ########.fr       */
+/*   Created: 2024/04/25 18:48:24 by hyungyki          #+#    #+#             */
+/*   Updated: 2024/04/25 19:08:39 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <stdlib.h>
 #include <stdio.h>
 
-char	*ft_strncpy(char *dest, const char *src, size_t n)
+char	*ft_strdup(const char *s)
 {
-	size_t	i;
+	char	*dest;
+	int		i;
+	int		len;
 
+	len = 0;
+	while (s[len] != '\0')
+		len++;
+	dest = (char *)malloc(sizeof(char) * (len + 1));
+	if (dest == 0)
+		return (0);
 	i = 0;
-	while (src[i] != '\0' && i < n)
+	while (i < len)
 	{
-		dest[i] = src[i];
+		dest[i] = s[i];
 		i++;
 	}
-	while (i < n)
-	{
-		dest[i] = '\0';
-		i++;
-	}
+	dest[i] = '\0';
 	return (dest);
 }
-
+/*
 int	main(void)
 {
-	char	dest[] = "helloworld";
-	char	src[] = "honeygyu";
+	char	s[] = "hello";
 
-	printf("%s\n", ft_strncpy(dest, src, 10));
-}	
+	printf("%p\n", s);
+	printf("%p\n", ft_strdup(s));
+	printf("%s\n", s);
+	printf("%s\n", ft_strdup(s));
+}*/

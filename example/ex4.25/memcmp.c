@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strncpy.c                                          :+:      :+:    :+:   */
+/*   memcmp.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/23 12:17:07 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/23 12:19:22 by hyungyki         ###   ########.fr       */
+/*   Created: 2024/04/25 14:49:13 by hyungyki          #+#    #+#             */
+/*   Updated: 2024/04/25 15:09:15 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
 
-char	*ft_strncpy(char *dest, const char *src, size_t n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
+	unsigned char	*se1;
+	unsigned char	*se2;
 	size_t	i;
 
+	se1 = (unsigned char *)s1;
+	se2 = (unsigned char *)s2;
 	i = 0;
-	while (src[i] != '\0' && i < n)
-	{
-		dest[i] = src[i];
-		i++;
-	}
+	if (n == 0)
+		return (0);
 	while (i < n)
 	{
-		dest[i] = '\0';
+		if (se1[i] != se2[i])
+			return (se1[i] - se2[i]);
 		i++;
 	}
-	return (dest);
+	return (0);
 }
-
-int	main(void)
-{
-	char	dest[] = "helloworld";
-	char	src[] = "honeygyu";
-
-	printf("%s\n", ft_strncpy(dest, src, 10));
-}	

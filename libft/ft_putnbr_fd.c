@@ -1,38 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strncpy.c                                          :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/23 12:17:07 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/23 12:19:22 by hyungyki         ###   ########.fr       */
+/*   Created: 2024/04/25 15:41:09 by hyungyki          #+#    #+#             */
+/*   Updated: 2024/04/25 15:53:54 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <unistd.h>
 #include <stdio.h>
 
-char	*ft_strncpy(char *dest, const char *src, size_t n)
+void	ft_putnbr_fd(int n, int fd)
 {
-	size_t	i;
-
-	i = 0;
-	while (src[i] != '\0' && i < n)
+	if (fd < 0)
+		return ;
+	if (n == -2147483648)
+		write (fd, "-2147483648", 11);
+	else if (n < 0)
 	{
-		dest[i] = src[i];
-		i++;
+		n *= -1;
+		write (fd, "-", 1);
+		ft_putnbr_fd(n, fd);
 	}
-	while (i < n)
+	else if (n <= 9)
 	{
-		dest[i] = '\0';
-		i++;
+		n = n + '0';
+		write (fd, &n, 1);
 	}
-	return (dest);
+	else
+	{
+		ft_putnbr_fd(n / 10, fd);
+		ft_putnbr_fd(n % 10, fd);
+	}
 }
-
+/*
 int	main(void)
 {
-	char	dest[] = "helloworld";
-	char	src[] = "honeygyu";
-
-	printf("%s\n", ft_strncpy(dest, src, 10));
-}	
+	ft_putnbr_fd(-2147483648, 1);
+	printf("\n");
+	ft_putnbr_fd(-123, 1);
+	printf("\n");
+	ft_putnbr_fd(5678, 1);
+}*/

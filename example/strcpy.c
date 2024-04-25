@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   strcpy.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyungyki <hyungyki@student.42gyeongsa      +#+  +:+       +#+        */
+/*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/28 17:06:11 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/03/28 19:37:19 by hyungyki         ###   ########.fr       */
+/*   Created: 2024/04/23 12:07:15 by hyungyki          #+#    #+#             */
+/*   Updated: 2024/04/23 12:52:17 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -27,7 +27,8 @@ char	*ft_strcpy(char *dest, const char *src)
 
 int	main(void)
 {
-	char dest[] = "hellohi";
-	char src[] = "world";
-	printf("%s", ft_strcpy(dest, src));
+	char	dest[] = "hello";
+	char	src[] = "honey";
+
+	printf("%s\n", ft_strcpy(dest, src));
 }

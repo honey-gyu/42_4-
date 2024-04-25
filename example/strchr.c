@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strncpy.c                                          :+:      :+:    :+:   */
+/*   strchr.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/23 12:17:07 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/23 12:19:22 by hyungyki         ###   ########.fr       */
+/*   Created: 2024/04/23 14:06:01 by hyungyki          #+#    #+#             */
+/*   Updated: 2024/04/23 15:23:53 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
 
-char	*ft_strncpy(char *dest, const char *src, size_t n)
+char	*ft_strchr(const char *s, int c)
 {
-	size_t	i;
+	unsigned char	*str;
+	int	i;
 
+	str = (unsigned char *)s;
 	i = 0;
-	while (src[i] != '\0' && i < n)
+	while (str[i] != '\0')
 	{
-		dest[i] = src[i];
+		if (str[i] == c)
+			return ((char *)str + i);
 		i++;
 	}
-	while (i < n)
-	{
-		dest[i] = '\0';
-		i++;
-	}
-	return (dest);
+	return (0);
 }
 
 int	main(void)
 {
-	char	dest[] = "helloworld";
-	char	src[] = "honeygyu";
+	char	s[] = "hello";
+	char	c = 'l';
+	char	a = 'a';
 
-	printf("%s\n", ft_strncpy(dest, src, 10));
-}	
+	printf("%s\n", ft_strchr(s, c));
+	printf("%s", ft_strchr(s,a));
+}

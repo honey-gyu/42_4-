@@ -1,38 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strncpy.c                                          :+:      :+:    :+:   */
+/*   memcpy.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/23 12:17:07 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/23 12:19:22 by hyungyki         ###   ########.fr       */
+/*   Created: 2024/04/25 13:53:04 by hyungyki          #+#    #+#             */
+/*   Updated: 2024/04/25 14:05:16 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
 
-char	*ft_strncpy(char *dest, const char *src, size_t n)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
+	unsigned char	*change;
+	unsigned char	*str;
 	size_t	i;
 
+	change = (unsigned char *)dest;
+	str = (unsigned char *)src;
 	i = 0;
-	while (src[i] != '\0' && i < n)
-	{
-		dest[i] = src[i];
-		i++;
-	}
+	if (change == NULL && str == NULL)
+		return (NULL);
 	while (i < n)
 	{
-		dest[i] = '\0';
+		change[i] = str[i];
 		i++;
 	}
-	return (dest);
+	return (change);
 }
 
 int	main(void)
 {
-	char	dest[] = "helloworld";
-	char	src[] = "honeygyu";
+	char	dest[] = "hello";
+	char 	*str = dest + 1;
 
-	printf("%s\n", ft_strncpy(dest, src, 10));
-}	
+	printf("%s\n", (char *)ft_memcpy(dest, str, 5 * sizeof(char)));
+}

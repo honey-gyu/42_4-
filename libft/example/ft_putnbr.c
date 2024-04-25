@@ -5,34 +5,32 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/23 20:31:32 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/23 20:38:13 by hyungyki         ###   ########.fr       */
+/*   Created: 2024/04/25 15:32:57 by hyungyki          #+#    #+#             */
+/*   Updated: 2024/04/25 15:37:16 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
 #include <stdio.h>
 
-void	ft_putchar(char c)
+void	ft_putnbr(int nb)
 {
-	write(1, &c, 1);
-}
-
-void	ft_putnbr(int n)
-{
-	if (n == -2147483648)
-		write(1, "-2147483648", 11);
-	else if (n < 0)
+	if (nb == -2147483648)
+		write (1, "-2147483648", 11);
+	else if (nb < 0)
 	{
-		n *= -1;
+		nb *= -1;
 		write (1, "-", 1);
-		ft_putnbr(n);
+		ft_putnbr(nb);
 	}
-	else if (n <= 9)
-		ft_putchar(n + '0');
+	else if (nb <= 9)
+	{
+		nb = nb + '0';
+		write (1, &nb, 1);
+	}
 	else
 	{
-		ft_putnbr(n / 10);
-		ft_putnbr(n % 10);
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
 	}
 }
 /*
@@ -40,7 +38,7 @@ int	main(void)
 {
 	ft_putnbr(-2147483648);
 	printf("\n");
-	ft_putnbr(-100);
+	ft_putnbr(-123);
 	printf("\n");
-	ft_putnbr(12345);
-}*/	
+	ft_putnbr(6789);
+}*/

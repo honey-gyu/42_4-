@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strncpy.c                                          :+:      :+:    :+:   */
+/*   memchr.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/23 12:17:07 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/23 12:19:22 by hyungyki         ###   ########.fr       */
+/*   Created: 2024/04/25 14:45:43 by hyungyki          #+#    #+#             */
+/*   Updated: 2024/04/25 14:49:02 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
 
-char	*ft_strncpy(char *dest, const char *src, size_t n)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
+	unsigned char	*str;
+	unsigned char	change;
 	size_t	i;
 
+	str = (unsigned char *)s;
+	change = (unsigned char)c;
 	i = 0;
-	while (src[i] != '\0' && i < n)
-	{
-		dest[i] = src[i];
-		i++;
-	}
 	while (i < n)
 	{
-		dest[i] = '\0';
+		if (str[i] == change)
+			return ((char *)str + i);
 		i++;
 	}
-	return (dest);
+	return (0);
 }
-
-int	main(void)
-{
-	char	dest[] = "helloworld";
-	char	src[] = "honeygyu";
-
-	printf("%s\n", ft_strncpy(dest, src, 10));
-}	

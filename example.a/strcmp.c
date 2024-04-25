@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   strcmp.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hyungyki <hyungyki@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/23 13:55:55 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/23 13:59:51 by hyungyki         ###   ########.fr       */
+/*   Created: 2024/03/29 13:34:26 by hyungyki          #+#    #+#             */
+/*   Updated: 2024/03/29 14:04:25 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
 
-int	strcmp(const char *s1, const char *s2)
+int	ft_strcmp(const char *s1, const char *s2)
 {
 	int	i;
 
@@ -20,7 +20,7 @@ int	strcmp(const char *s1, const char *s2)
 		i++;
 	if (s1[i] == s2[i])
 		return (0);
-	else if (s1[i] > s2[i])
+	else if (s1[i] < s2[i])
 		return (s1[i] - s2[i]);
 	else
 		return (s1[i] - s2[i]);
@@ -32,6 +32,6 @@ int	main(void)
 	char	s2[] = "hello";
 	char	s3[] = "honey";
 
-	printf("%d\n", strcmp(s1, s2));
-	printf("%d\n", strcmp(s2, s3));
+	printf("%d\n", ft_strcmp(s1, s2));
+	printf("%d\n", ft_strcmp(s2, s3));
 }

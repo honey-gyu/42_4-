@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strncpy.c                                          :+:      :+:    :+:   */
+/*   memmove.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/23 12:17:07 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/23 12:19:22 by hyungyki         ###   ########.fr       */
+/*   Created: 2024/04/25 14:05:45 by hyungyki          #+#    #+#             */
+/*   Updated: 2024/04/25 14:13:18 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
 
-char	*ft_strncpy(char *dest, const char *src, size_t n)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
+	unsigned char	*change;
+	unsigned char	*str;
 	size_t	i;
 
+	change = (unsigned char *)dest;
+	str = (unsigned char *)src;
 	i = 0;
-	while (src[i] != '\0' && i < n)
+	if (change == NULL && str == NULL)
+		return (NULL);
+	if (change < str)
 	{
-		dest[i] = src[i];
-		i++;
-	}
-	while (i < n)
+		while (i < n)
+		{
+				change[i] = str[i];
+				i++;
+		}
+	else
 	{
-		dest[i] = '\0';
-		i++;
+		while (n--)
+			*(change + n) = *(str + n);
 	}
-	return (dest);
+	return (change);
 }
-
-int	main(void)
-{
-	char	dest[] = "helloworld";
-	char	src[] = "honeygyu";
-
-	printf("%s\n", ft_strncpy(dest, src, 10));
-}	
