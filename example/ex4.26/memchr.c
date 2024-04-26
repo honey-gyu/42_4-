@@ -1,46 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   memchr.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/25 17:13:38 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/26 17:45:43 by hyungyki         ###   ########.fr       */
+/*   Created: 2024/04/26 15:12:49 by hyungyki          #+#    #+#             */
+/*   Updated: 2024/04/26 15:19:00 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
-#include <stdlib.h>
 
-void	*ft_memset(void *s, int c, size_t n)
+void	*memchr(const void *s, int c, size_t n)
 {
-	unsigned char	*str;
-	unsigned char	change;
-	size_t			i;
+	unsigned char *str;
+	size_t	i;
 
 	str = (unsigned char *)s;
-	change = (unsigned char)c;
 	i = 0;
 	while (i < n)
-		str[i++] = change;
-	return (str);
+	{
+		if (str[i] == c)
+			return ((char *)str + i);
+		i++;
+	}
+	return (0);
 }
 
-void	*ft_calloc(size_t nmemb, size_t size)
-{
-	void	*temp;
-
-	temp = malloc(nmemb * size);
-	if (temp == 0)
-		return (0);
-	ft_memset(temp, 0, nmemb * size);
-	return (temp);
-}
-/*
 int	main(void)
 {
-	int	a = 4;
-	int	*temp = (int *)ft_calloc(a, 5 * sizeof(int));
+	char	s[] = "hello";
 
-	printf("%d", *temp);
-}*/
+	printf("%s\n", (char *)memchr(s, 'l', 5 * sizeof(char)));
+}

@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   calloc.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/25 17:13:38 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/26 17:45:43 by hyungyki         ###   ########.fr       */
+/*   Created: 2024/04/26 15:36:35 by hyungyki          #+#    #+#             */
+/*   Updated: 2024/04/26 15:51:48 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
 #include <stdlib.h>
 
-void	*ft_memset(void *s, int c, size_t n)
+void    *ft_memset(void *s, int c, size_t n)
 {
-	unsigned char	*str;
-	unsigned char	change;
-	size_t			i;
+        unsigned char   *str;
+        unsigned char   change;
+        size_t                  i;
 
-	str = (unsigned char *)s;
-	change = (unsigned char)c;
-	i = 0;
-	while (i < n)
-		str[i++] = change;
-	return (str);
+        str = (unsigned char *)s;
+        change = (unsigned char)c;
+        i = 0;
+        while (i < n)
+                str[i++] = change;
+        return (str);
 }
 
-void	*ft_calloc(size_t nmemb, size_t size)
+void	*calloc(size_t nmemb, size_t size)
 {
 	void	*temp;
 
@@ -36,11 +36,11 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	ft_memset(temp, 0, nmemb * size);
 	return (temp);
 }
-/*
-int	main(void)
-{
-	int	a = 4;
-	int	*temp = (int *)ft_calloc(a, 5 * sizeof(int));
 
-	printf("%d", *temp);
-}*/
+int     main(void)
+{
+        int     a = 4;
+        int     *temp = (int *)calloc(a, 5 * sizeof(int));
+
+        printf("%d", *temp);
+}

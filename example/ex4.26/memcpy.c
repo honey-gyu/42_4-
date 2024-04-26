@@ -1,46 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   memcpy.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/25 17:13:38 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/26 17:45:43 by hyungyki         ###   ########.fr       */
+/*   Created: 2024/04/26 14:56:43 by hyungyki          #+#    #+#             */
+/*   Updated: 2024/04/26 15:00:16 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
-#include <stdlib.h>
 
-void	*ft_memset(void *s, int c, size_t n)
+void	*memcpy(void *dest, const void *src, size_t n)
 {
+	unsigned char	*change;
 	unsigned char	*str;
-	unsigned char	change;
-	size_t			i;
+	size_t	i;
 
-	str = (unsigned char *)s;
-	change = (unsigned char)c;
+	change = (unsigned char *)dest;
+	str = (unsigned char *)src;
 	i = 0;
+	if (change == NULL && str == NULL)
+		return (NULL);
 	while (i < n)
-		str[i++] = change;
-	return (str);
+	{
+		change[i] = str[i];
+		i++;
+	}
+	return (change);
 }
 
-void	*ft_calloc(size_t nmemb, size_t size)
-{
-	void	*temp;
-
-	temp = malloc(nmemb * size);
-	if (temp == 0)
-		return (0);
-	ft_memset(temp, 0, nmemb * size);
-	return (temp);
-}
-/*
 int	main(void)
 {
-	int	a = 4;
-	int	*temp = (int *)ft_calloc(a, 5 * sizeof(int));
+	char	dest[] = "hello";
+	char	*src = dest + 1;
 
-	printf("%d", *temp);
-}*/
+	printf("%s\n", (char *)memcpy(dest, src, 5 * sizeof(char)));
+}

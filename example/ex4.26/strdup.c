@@ -1,46 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   strdup.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/25 17:13:38 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/26 17:45:43 by hyungyki         ###   ########.fr       */
+/*   Created: 2024/04/26 15:59:14 by hyungyki          #+#    #+#             */
+/*   Updated: 2024/04/26 16:08:17 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
 #include <stdlib.h>
 
-void	*ft_memset(void *s, int c, size_t n)
+char	*strdup(const char *s)
 {
-	unsigned char	*str;
-	unsigned char	change;
-	size_t			i;
+	char	*dest;
+	int	i;
+	int	len;
 
-	str = (unsigned char *)s;
-	change = (unsigned char)c;
 	i = 0;
-	while (i < n)
-		str[i++] = change;
-	return (str);
-}
-
-void	*ft_calloc(size_t nmemb, size_t size)
-{
-	void	*temp;
-
-	temp = malloc(nmemb * size);
-	if (temp == 0)
+	len = 0;
+	while (s[len] != '\0')
+		len++;
+	dest = (char *)malloc(sizeof(char) * (len + 1));
+	if (dest == 0)
 		return (0);
-	ft_memset(temp, 0, nmemb * size);
-	return (temp);
+	while (i < len)
+	{
+		dest[i] = s[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }
-/*
+
 int	main(void)
 {
-	int	a = 4;
-	int	*temp = (int *)ft_calloc(a, 5 * sizeof(int));
+	char	s[] = "hello";
 
-	printf("%d", *temp);
-}*/
+	printf("%s\n", strdup(s));
+}
