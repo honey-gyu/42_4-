@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/25 15:54:15 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/28 15:19:23 by hyungyki         ###   ########.fr       */
+/*   Created: 2024/04/22 20:03:12 by hyungyki          #+#    #+#             */
+/*   Updated: 2024/04/22 20:10:12 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
-//#include <libft.h>
+#include <stdio.h>
 
-void	ft_putendl_fd(char *s, int fd)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	if (fd < 0)
-		return ;
-	while (*s)
-		write (fd, s++, 1);
-	write(fd, "\n", 1);
+	int	i;
+
+	i = 0;
+	while (s1[i] == s2[i] && (s1[i] != '\0' && s2[i] != '\0'))
+		i++;
+	if (s1[i] == s2[i])
+		return (0);
+	else if (s1[i] > s2[i])
+		return (s1[i] - s2[i]);
+	else
+		return (s1[i] - s2[i]);
 }
 /*
 int	main(void)
 {
-	char	s[] = "hello";
+	char	s1[] = "hello";
+	char	s2[] = "hello";
+	char	s3[] = "honey";
 
-	ft_putendl_fd(s, 1);
+	printf("%d\n", ft_strcmp(s1, s2));
+	printf("%d\n", ft_strcmp(s2, s3));
 }*/

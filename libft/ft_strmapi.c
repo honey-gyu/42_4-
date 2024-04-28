@@ -1,44 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/22 17:09:09 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/28 15:19:55 by hyungyki         ###   ########.fr       */
+/*   Created: 2024/04/28 17:54:25 by hyungyki          #+#    #+#             */
+/*   Updated: 2024/04/28 18:26:21 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
+#include <stdlib.h>
 //#include <libft.h>
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+char	f(unsigned int i, char c)
 {
+	char	s;
+
+	s = c + 1;
+	return (s);
+}
+
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+{
+	char	*dest;
 	size_t	i;
 	size_t	len;
 
+	if (!s || !f)
+		return (NULL);
 	i = 0;
 	len = 0;
-	while (src[i] != '\0' && i + 1 < size)
+	while (s[len] != '\0')
+		len++;
+	dest = (char *)malloc(sizeof(char) * (len + 1));
+	if (!dest)
+		return (NULL);
+	while (i < len)
 	{
-		dst[i] = src[i];
+		dest[i] = f(i, s[i]);
 		i++;
 	}
-	if (size > 0)
-		dst[i] = '\0';
-	while (src[len])
-		len++;
-	return (len);
+	dest[i] = '\0';
+	return (dest);
 }
 /*
 int	main(void)
 {
-	char	dst[] = "hello world";
-	char	src[] = "honeygyu";
+	char	s[] ="12345";
 
-	printf("%ld\n", ft_strlcpy(dst, src, 3));
-	printf("%s\n", dst);
-	printf("%ld\n", ft_strlcpy(dst, src, 8));
-	printf("%s\n", dst);
-	printf("%ld\n", ft_strlcpy(dst, src, 0));
+	printf("%s\n", ft_strmapi(s, f));
 }*/

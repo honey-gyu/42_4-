@@ -6,10 +6,11 @@
 /*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 19:16:52 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/23 19:28:40 by hyungyki         ###   ########.fr       */
+/*   Updated: 2024/04/28 15:18:53 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
+//#include <libft.h>
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {

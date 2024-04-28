@@ -6,10 +6,11 @@
 /*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 15:39:33 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/22 15:51:24 by hyungyki         ###   ########.fr       */
+/*   Updated: 2024/04/28 15:18:33 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
+//#include <libft.h>
 
 int	ft_isdigit(int c)
 {

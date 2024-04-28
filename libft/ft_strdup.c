@@ -6,11 +6,12 @@
 /*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 18:48:24 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/25 19:08:39 by hyungyki         ###   ########.fr       */
+/*   Updated: 2024/04/28 15:19:40 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdlib.h>
 #include <stdio.h>
+//#include <libft.h>
 
 char	*ft_strdup(const char *s)
 {

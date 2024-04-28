@@ -6,10 +6,11 @@
 /*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 19:40:44 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/23 20:19:16 by hyungyki         ###   ########.fr       */
+/*   Updated: 2024/04/28 15:19:16 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
+//#include <libft.h>
 
 void	ft_putchar_fd(char c, int fd)
 {

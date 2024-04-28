@@ -6,10 +6,11 @@
 /*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 19:42:18 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/22 20:02:51 by hyungyki         ###   ########.fr       */
+/*   Updated: 2024/04/28 15:19:35 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
+//#include <libft.h>
 
 char	*ft_strchr(const char *s, int c)
 {

@@ -1,29 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/25 15:54:15 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/28 15:19:23 by hyungyki         ###   ########.fr       */
+/*   Created: 2024/04/28 18:12:01 by hyungyki          #+#    #+#             */
+/*   Updated: 2024/04/28 18:36:06 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
+#include <stdio.h>
 //#include <libft.h>
 
-void	ft_putendl_fd(char *s, int fd)
+void	f(unsigned int i, char *c)
 {
-	if (fd < 0)
+	*c += 1;
+}
+
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+{
+	size_t	i;
+	size_t	len;
+
+	if (!s || !f)
 		return ;
-	while (*s)
-		write (fd, s++, 1);
-	write(fd, "\n", 1);
+	i = 0;
+	len = 0;
+	while (s[len] != '\0')
+		len++;
+	while (i < len)
+	{
+		f(i, &s[i]);
+		i++;
+	}
 }
 /*
 int	main(void)
 {
-	char	s[] = "hello";
+	char	s[] = "12345";
 
-	ft_putendl_fd(s, 1);
+	ft_striteri(s, f);
+	printf("%s", s);
 }*/

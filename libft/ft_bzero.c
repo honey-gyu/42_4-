@@ -6,10 +6,11 @@
 /*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 16:37:06 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/22 16:50:25 by hyungyki         ###   ########.fr       */
+/*   Updated: 2024/04/28 15:18:05 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
+//#include <libft.h>
 
 void	ft_bzero(void *s, size_t n)
 {

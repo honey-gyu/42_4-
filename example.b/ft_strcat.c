@@ -1,29 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/25 15:54:15 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/28 15:19:23 by hyungyki         ###   ########.fr       */
+/*   Created: 2024/04/22 17:32:22 by hyungyki          #+#    #+#             */
+/*   Updated: 2024/04/22 18:17:09 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
-//#include <libft.h>
+#include <stdio.h>
 
-void	ft_putendl_fd(char *s, int fd)
+char	*ft_strcat(char *dest, const char *src)
 {
-	if (fd < 0)
-		return ;
-	while (*s)
-		write (fd, s++, 1);
-	write(fd, "\n", 1);
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (dest[i] != '\0')
+		i++;
+	while (src[j] != '\0')
+	{
+		dest[i] = src[j];
+		i++;
+		j++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }
 /*
 int	main(void)
 {
-	char	s[] = "hello";
+	char	dest[] = "hello";
+	char	src[] = "world";
 
-	ft_putendl_fd(s, 1);
+	printf("%s", ft_strcat(dest, src));
 }*/

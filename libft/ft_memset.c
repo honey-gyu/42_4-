@@ -6,10 +6,11 @@
 /*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 16:21:20 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/22 16:36:48 by hyungyki         ###   ########.fr       */
+/*   Updated: 2024/04/28 15:19:11 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
+//#include <libft.h>
 
 void	*ft_memset(void *s, int c, size_t n)
 {

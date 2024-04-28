@@ -6,10 +6,11 @@
 /*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 20:10:47 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/23 19:26:02 by hyungyki         ###   ########.fr       */
+/*   Updated: 2024/04/28 15:20:02 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
+//#include <libft.h>
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {

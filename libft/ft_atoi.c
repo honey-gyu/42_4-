@@ -6,10 +6,11 @@
 /*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 20:24:57 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/22 20:33:50 by hyungyki         ###   ########.fr       */
+/*   Updated: 2024/04/28 15:18:00 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
+//#include <libft.h>
 
 int	ft_atoi(const char *nptr)
 {

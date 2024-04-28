@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/23 18:51:36 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/28 15:18:48 by hyungyki         ###   ########.fr       */
+/*   Created: 2024/04/23 17:11:56 by hyungyki          #+#    #+#             */
+/*   Updated: 2024/04/23 17:51:41 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
-//#include <libft.h>
 
-void	*ft_memchr(const void *s, int c, size_t n)
+char	*ft_strstr(const char *haystack, const char *needle)
 {
-	unsigned char	*str;
-	unsigned char	change;
-	size_t			i;
+	int	i;
+	int	j;
 
-	str = (unsigned char *)s;
-	change = (unsigned char)c;
 	i = 0;
-	while (i < n)
+	if (needle[0] == '\0')
+		return ((char *)haystack);
+	while (haystack[i] != '\0')
 	{
-		if (str[i] == change)
-			return ((char *)str + i);
+		j = 0;
+		while (haystack[i + j] == needle[j])
+		{
+			j++;
+			if (needle[j] == '\0')
+				return ((char *)&haystack[i]);
+		}
 		i++;
 	}
 	return (0);
@@ -32,11 +35,12 @@ void	*ft_memchr(const void *s, int c, size_t n)
 /*
 int	main(void)
 {
-	char	s[] = "hello";
-	char	c = 'l';
-	char	a = 'a';
+	char	s1[] = "hello";
+	char	s2[] = "hel";
+	char	s3[] = "";
+	char	s4[] = "honeyhel";
 
-	printf("%s\n", (char *)ft_memchr(s, c, 5 * sizeof(char)));
-	printf("%s\n", (char *)ft_memchr(s, a, 5 * sizeof(char)));
-	printf("%s\n", (char *)ft_memchr(s, c, 2 * sizeof(char)));
+	printf("%s\n", ft_strstr(s1, s3));
+	printf("%s\n", ft_strstr(s1, s2));
+	printf("%s\n", ft_strstr(s1, s4));
 }*/

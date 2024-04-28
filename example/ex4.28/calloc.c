@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   calloc.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/25 15:54:15 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/28 15:19:23 by hyungyki         ###   ########.fr       */
+/*   Created: 2024/04/28 16:16:14 by hyungyki          #+#    #+#             */
+/*   Updated: 2024/04/28 16:21:40 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
-//#include <libft.h>
+#include <stdlib.h>
+#include <stdio.h>
 
-void	ft_putendl_fd(char *s, int fd)
+void	*calloc(size_t nmemb, size_t size)
 {
-	if (fd < 0)
-		return ;
-	while (*s)
-		write (fd, s++, 1);
-	write(fd, "\n", 1);
+	void	*temp;
+
+	temp = malloc(nmemb * size);
+	if (!temp)
+		return (NULL);
+	ft_memset(temp, 0, nmemb * size);
+	return (temp);
 }
-/*
+
 int	main(void)
 {
-	char	s[] = "hello";
+	int	a = 4;
+	char	*temp = (char *)calloc(a, 5 * sizeof(char));
 
-	ft_putendl_fd(s, 1);
-}*/
+	printf("%d\n", *temp);
+}

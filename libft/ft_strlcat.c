@@ -6,10 +6,11 @@
 /*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 18:20:47 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/23 16:55:35 by hyungyki         ###   ########.fr       */
+/*   Updated: 2024/04/28 15:19:51 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
+//#include <libft.h>
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {

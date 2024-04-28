@@ -6,10 +6,11 @@
 /*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 16:58:54 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/23 18:36:50 by hyungyki         ###   ########.fr       */
+/*   Updated: 2024/04/28 15:20:06 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
+//#include <libft.h>
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
