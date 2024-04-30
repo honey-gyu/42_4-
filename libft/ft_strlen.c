@@ -6,11 +6,10 @@
 /*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 16:15:30 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/28 15:19:59 by hyungyki         ###   ########.fr       */
+/*   Updated: 2024/04/29 13:16:10 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
-//#include <libft.h>
+#include "libft.h"
 
 size_t	ft_strlen(const char *s)
 {

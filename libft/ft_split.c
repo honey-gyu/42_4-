@@ -1,109 +1,82 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   split.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/28 15:44:38 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/28 19:16:04 by hyungyki         ###   ########.fr       */
+/*   Created: 2024/04/29 21:31:22 by hyungyki          #+#    #+#             */
+/*   Updated: 2024/04/29 21:31:34 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
-#include <stdlib.h>
-//#include <libft.h>
+#include "libft.h"
 
-int	is_seper(char c, char *seper)
+static void	free_str(char **splitstr)
 {
 	int	i;
 
 	i = 0;
-	while (seper[i])
-	{
-		if (c == seper[i])
-			return (1);
-		i++;
-	}
-	return (0);
+	while (!splitstr[i])
+		free(splitstr[i++]);
+	free(splitstr);
 }
 
-int	word_count(char *str, char *seper)
+static int	word_count(char const *str, char c)
 {
 	int	count;
-	int	i;
 
 	count = 0;
-	i = 0;
-	while (str[i] != '\0')
+	while (*str)
 	{
-		while (is_seper(str[i], seper) && str[i] != '\0')
-			i++;
-		if (!is_seper(str[i], seper) && str[i] != '\0')
+		if (*str == c)
+			str++;
+		else
 		{
-			i++;
 			count++;
+			while (*str != c && *str)
+				str++;
 		}
-		while (!is_seper(str[i], seper) && str[i] != '\0')
-			i++;
 	}
 	return (count);
 }
 
-char	*ft_word_dup(char *src, char *seper)
+static int	plus_word(char const *str, char c, char **splitstr, int i)
 {
-	int		i;
-	int		w_len;
-	char	*strcpy;
+	int	len;
 
-	w_len = 0;
-	while (!is_seper(src[w_len], seper) && src[w_len] != '\0')
-		w_len++;
-	strcpy = (char *)malloc(sizeof(char) * (w_len + 1));
-	if (strcpy != 0)
-	{
-		i = 0;
-		while (i < w_len)
-		{
-			strcpy[i] = *src;
-			src++;
-			i++;
-		}
-		strcpy[i] = '\0';
-	}
-	return (strcpy);
-}
-
-char	**ft_split(char *str, char *charset)
-{
-	int		count;
-	int		i;
-	char	**arr_f;
-
-	count = word_count(str, charset);
-	arr_f = (char **)malloc(sizeof(char *) * (count + 1));
-	arr_f[count] = (void *)0;
-	i = -1;
 	while (*str)
 	{
-		count = 0;
-		while (is_seper(*str, charset) && *str)
+		if (*str == c)
 			str++;
-		if (!is_seper(*str, charset) && *str)
-			arr_f[++i] = ft_word_dup(str, charset);
-		while (!is_seper(*str, charset) && *str)
-			str++;
+		else
+		{
+			len = 0;
+			while (*str != c && *str)
+			{
+				str++;
+				len++;
+			}
+			splitstr[i] = (char *)malloc((len + 1) * sizeof(char));
+			if (!splitstr[i])
+			{
+				free_str(splitstr);
+				return (-1);
+			}
+			ft_strlcpy((char *)splitstr[i++], (char *)str - len, len + 1);
+		}
 	}
-	return (arr_f);
+	splitstr[i] = 0;
+	return (1);
 }
 
-int	main(void)
+char	**ft_split(char const *str, char c)
 {
-	char	**array;
-	char	str[] ="hello?world?honey";
-	char	c[] = "?";
-	int	i = 0;
+	char	**splitstr;
 
-	array = ft_split(str, c);
-	while(array[i])
-		printf("%s\n", array[i++]);
+	splitstr = (char **)malloc((word_count(str, c) + 1) * sizeof(char *));
+	if (!splitstr)
+		return (NULL);
+	if ((plus_word(str, c, splitstr, 0)) == -1)
+		return (NULL);
+	return (splitstr);
 }

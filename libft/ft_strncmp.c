@@ -6,27 +6,30 @@
 /*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 20:10:47 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/28 15:20:02 by hyungyki         ###   ########.fr       */
+/*   Updated: 2024/04/29 15:09:28 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
-//#include <libft.h>
+#include "libft.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	size_t	i;
+	unsigned char	*se1;
+	unsigned char	*se2;
+	size_t			i;
 
+	se1 = (unsigned char *)s1;
+	se2 = (unsigned char *)s2;
 	i = 0;
 	if (n == 0)
 		return (0);
-	while (s1[i] == s2[i] && (s1[i] != '\0' && s2[i] != '\0') && i < n)
+	while (se1[i] == se2[i] && i + 1 < n && (se1[i] != '\0' && se2[i] != '\0'))
 		i++;
-	if (s1[i] == s2[i])
+	if (se1[i] == se2[i])
 		return (0);
-	else if (s1[i] > s2[i])
-		return (s1[i] - s2[i]);
+	else if (se1[i] < se2[i])
+		return (se1[i] - se2[i]);
 	else
-		return (s1[i] - s2[i]);
+		return (se1[i] - se2[i]);
 }
 /*
 int	main(void)

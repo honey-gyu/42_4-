@@ -6,11 +6,10 @@
 /*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 19:40:00 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/28 15:20:21 by hyungyki         ###   ########.fr       */
+/*   Updated: 2024/04/29 13:17:01 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
-//#include <libft.h>
+#include "libft.h"
 
 int	ft_tolower(int c)
 {

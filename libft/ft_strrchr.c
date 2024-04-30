@@ -3,24 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hyungyki <hyungyki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 19:54:30 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/28 15:20:11 by hyungyki         ###   ########.fr       */
+/*   Updated: 2024/04/29 20:29:17 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
-//#include <libft.h>
 
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
+#include "libft.h"
 
 char	*ft_strrchr(const char *s, int c)
 {
@@ -29,7 +19,7 @@ char	*ft_strrchr(const char *s, int c)
 
 	str = (unsigned char *)s;
 	i = ft_strlen(s);
-	while (i != 0)
+	while (i >= 0)
 	{
 		if (str[i] == c)
 			return ((char *)str + i);

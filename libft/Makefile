@@ -18,6 +18,7 @@ SRCS = \
        ft_isprint.c \
        ft_strlen.c \
        ft_memset.c \
+       ft_memcpy.c \
        ft_bzero.c \
        ft_memmove.c \
        ft_strlcpy.c \
@@ -36,7 +37,6 @@ SRCS = \
        ft_substr.c \
        ft_strjoin.c \
        ft_strtrim.c \
-       ft_split.c \
        ft_itoa.c \
        ft_strmapi.c \
        ft_striteri.c \
@@ -44,23 +44,27 @@ SRCS = \
        ft_putstr_fd.c \
        ft_putendl_fd.c \
        ft_putnbr_fd.c \
+       ft_split.c \
 
 OBJS = $(SRCS:.c=.o)
 
 all : $(NAME)
 
-$(NAME): $(OBJS)
-	ar cr $@ $^
-
-%.o: %.c
+%.o : %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-clean:
+clean :
 	$(RM) $(OBJS)
 
-fclean: clean
+fclean : clean
 	$(RM) $(NAME)
 
-re: clean all
+re : fclean all
+
+$(NAME) : $(OBJS)
+	$(AR) $(ARFLAGS) $@ $^
 
 .PHONY: all clean fclean re
+so:
+	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS)
+	gcc -nostartfiles -shared -o libft.so $(OBJS)

@@ -6,11 +6,10 @@
 /*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:51:36 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/28 15:18:48 by hyungyki         ###   ########.fr       */
+/*   Updated: 2024/04/29 13:14:00 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
-//#include <libft.h>
+#include "libft.h"
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {

@@ -3,25 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hyungyki <hyungyki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 16:27:29 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/28 15:20:17 by hyungyki         ###   ########.fr       */
+/*   Updated: 2024/04/29 20:33:06 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
-#include <stdlib.h>
-//#include <libft.h>
 
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
+#include "libft.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {

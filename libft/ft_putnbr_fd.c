@@ -6,12 +6,10 @@
 /*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 15:41:09 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/28 15:19:27 by hyungyki         ###   ########.fr       */
+/*   Updated: 2024/04/29 13:14:41 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
-#include <stdio.h>
-//#include <libft.h>
+#include "libft.h"
 
 void	ft_putnbr_fd(int n, int fd)
 {

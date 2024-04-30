@@ -1,44 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/25 18:48:24 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/29 13:15:16 by hyungyki         ###   ########.fr       */
+/*   Created: 2024/04/29 21:37:05 by hyungyki          #+#    #+#             */
+/*   Updated: 2024/04/29 21:37:12 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+char	*ft_strnstr(const char *big, const char *little, size_t size)
 {
-	char	*dest;
-	int		i;
-	int		len;
+	size_t	count;
+	size_t	little_len;
 
-	len = 0;
-	while (s[len] != '\0')
-		len++;
-	dest = (char *)malloc(sizeof(char) * (len + 1));
-	if (dest == 0)
-		return (0);
-	i = 0;
-	while (i < len)
+	count = 0;
+	little_len = ft_strlen(little);
+	if (!little_len)
+		return ((char *)big);
+	while (*big && size-- > 0)
 	{
-		dest[i] = s[i];
-		i++;
+		if (*big == little[count])
+			count++;
+		else
+		{
+			big -= count;
+			count = 0;
+		}
+		if (count == little_len)
+			return ((char *)big - count + 1);
+		big++;
 	}
-	dest[i] = '\0';
-	return (dest);
+	return (NULL);
 }
-/*
-int	main(void)
-{
-	char	s[] = "hello";
-
-	printf("%p\n", s);
-	printf("%p\n", ft_strdup(s));
-	printf("%s\n", s);
-	printf("%s\n", ft_strdup(s));
-}*/

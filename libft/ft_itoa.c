@@ -5,59 +5,59 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/28 15:23:05 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/28 17:29:12 by hyungyki         ###   ########.fr       */
+/*   Created: 2024/04/29 21:34:12 by hyungyki          #+#    #+#             */
+/*   Updated: 2024/04/29 21:34:22 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
-#include <stdlib.h>
-//#include <libft.h>
+#include "libft.h"
 
-int	ft_len(long nb)
+static int	cal_count(int n)
 {
-	int	len;
+	int				count;
+	unsigned int	temp;
 
-	len = 0;
-	if (nb < 0)
+	count = 0;
+	if (n < 0)
 	{
-		nb *= -1;
-		len++;
+		temp = n * -1;
+		count++;
 	}
-	while (nb > 0)
+	else
+		temp = n;
+	if (temp == 0)
+		count = 1;
+	while (temp > 0)
 	{
-		nb /= 10;
-		len++;
+		temp /= 10;
+		count++;
 	}
-	return (len);
+	return (count);
+}
+
+static void	recur_cal(char *str, unsigned int n, int count)
+{
+	count--;
+	if (n >= 10)
+		recur_cal(str, n / 10, count);
+	*(str + count) = n % 10 | '0';
 }
 
 char	*ft_itoa(int n)
 {
-	char	*dest;
-	int		len;
+	char	*str;
+	int		count;
 
-	len = ft_len(n);
-	dest = (char *)malloc(sizeof(char) * (len + 1));
-	if (!dest)
+	count = cal_count(n);
+	str = (char *)malloc((count + 1) * sizeof(char));
+	if (!str)
 		return (NULL);
-	dest[len--] = '\0';
-	if (n == 0)
-		dest[0] = '0';
 	if (n < 0)
 	{
-		dest[0] = '-';
-		n *= -1;
+		*str = '-';
+		recur_cal(str, (unsigned int)(n * -1), count);
 	}
-	while (n > 0)
-	{
-		dest[len] = (n % 10) + '0';
-		n /= 10;
-		len--;
-	}
-	return (dest);
+	else
+		recur_cal(str, n, count);
+	*(str + count) = 0;
+	return (str);
 }
-/*
-int	main(void)
-{
-	printf("%s\n", ft_itoa(-123));
-}*/

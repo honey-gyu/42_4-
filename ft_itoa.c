@@ -1,50 +1,59 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyungyki <hyungyki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/28 17:54:25 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/29 20:34:54 by hyungyki         ###   ########.fr       */
+/*   Created: 2024/04/28 15:23:05 by hyungyki          #+#    #+#             */
+/*   Updated: 2024/04/29 20:30:45 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-// static char	f(unsigned int i, char c)
-// {
-// 	c += i;
-// 	return (c);
-// }
+static size_t	ft_len(int nb)
+{
+	int	len;
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+	len = 0;
+	if (nb <= 0)
+		len++;
+	while (nb > 0)
+	{
+		nb /= 10;
+		len++;
+	}
+	return (len);
+}
+
+char	*ft_itoa(int n)
 {
 	char	*dest;
-	size_t	i;
-	size_t	len;
+	int		len;
 
-	if (!s || !f)
-		return (NULL);
-	i = 0;
-	len = 0;
-	while (s[len] != '\0')
-		len++;
-	dest = (char *)malloc(sizeof(char) * (len + 1));
+	len = ft_len(n);
+	dest = malloc(sizeof(char) * len + 1);
 	if (!dest)
 		return (NULL);
-	while (i < len)
+	if (n < 0)
 	{
-		dest[i] = f(i, s[i]);
-		i++;
+		dest[0] = '-';
+		n *= -1;
 	}
-	dest[i] = '\0';
+	if (n == 0)
+		dest[0] = '0';
+	dest[len--] = '\0';
+	while (n > 0)
+	{
+		dest[len] = n % 10 + '0';
+		len--;
+		n /= 10;
+	}
 	return (dest);
 }
-/*
-int	main(void)
-{
-	char	s[] ="12345";
 
-	printf("%s\n", ft_strmapi(s, f));
-}*/
+// int	main(void)
+// {
+// 	printf("%s\n", ft_itoa(-123));
+// }

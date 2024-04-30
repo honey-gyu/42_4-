@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hyungyki <hyungyki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:51:02 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/28 15:20:14 by hyungyki         ###   ########.fr       */
+/*   Updated: 2024/04/29 20:32:45 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
-#include <stdlib.h>
-//#include <libft.h>
 
-int	ft_start(char const *s, char const *set, size_t len)
+#include "libft.h"
+
+static int	ft_start(char const *s, char const *set, size_t len)
 {
 	size_t	i;
 
@@ -27,7 +26,7 @@ int	ft_start(char const *s, char const *set, size_t len)
 	return (i);
 }
 
-int	ft_end(char const *s, char const *set, size_t len)
+static int	ft_end(char const *s, char const *set, size_t len)
 {
 	size_t	i;
 

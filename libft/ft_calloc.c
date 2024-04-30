@@ -3,29 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hyungyki <hyungyki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 17:13:38 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/28 15:18:10 by hyungyki         ###   ########.fr       */
+/*   Updated: 2024/04/29 20:29:56 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
-#include <stdlib.h>
-//#include <libft.h>
 
-void	*ft_memset(void *s, int c, size_t n)
-{
-	unsigned char	*str;
-	unsigned char	change;
-	size_t			i;
-
-	str = (unsigned char *)s;
-	change = (unsigned char)c;
-	i = 0;
-	while (i < n)
-		str[i++] = change;
-	return (str);
-}
+#include "libft.h"
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {

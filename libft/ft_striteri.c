@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hyungyki <hyungyki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 18:12:01 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/28 18:36:06 by hyungyki         ###   ########.fr       */
+/*   Updated: 2024/04/29 20:35:23 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
-//#include <libft.h>
 
-void	f(unsigned int i, char *c)
-{
-	*c += 1;
-}
+#include "libft.h"
+
+// static void	f(unsigned int i, char *c)
+// {
+// 	*c += i;
+// }
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {

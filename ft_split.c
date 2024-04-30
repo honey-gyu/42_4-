@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   split.c                                            :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyungyki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 19:48:06 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/04/29 16:52:31 by hyungyki         ###   ########.fr       */
+/*   Updated: 2024/04/29 17:55:41 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdlib.h>
-#include <stdio.h>
+#include "libft.h"
 
-int	ft_sep(char s, char seper)
+static size_t	ft_sep(char s, char seper)
 {
-	int	i;
-
-	i = 0;
-	while (seper)
-	{
-		if (s == seper)
-			return (1);
-		i++;
-	}
-	return (0);
+	return (s == seper);
 }
 
-int	ft_count(char const *s, char c)
+static size_t	ft_count(char const *s, char c)
 {
-	int	i;
-	int	count;
+	size_t	i;
+	size_t	count;
 
 	i = 0;
 	count = 0;
@@ -48,7 +38,7 @@ int	ft_count(char const *s, char c)
 	return (count);
 }
 
-char	*ft_dup(char *s, char c)
+static char	*ft_dup(char *s, char c)
 {
 	char	*dest;
 	int		i;
@@ -70,14 +60,23 @@ char	*ft_dup(char *s, char c)
 	return (dest);
 }
 
+static	void	ft_free(char **s, int i)
+{
+	while (i-- > 0)
+	{
+		free(s[i]);
+		s[i] = NULL;
+	}
+	free(s);
+	s = NULL;
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	**dest;
 	int		i;
 	int		len;
 
-	if (!s)
-		return (NULL);
 	dest = (char **)malloc(sizeof(char *) * (ft_count(s, c) + 1));
 	if (!dest)
 		return (NULL);
@@ -89,13 +88,18 @@ char	**ft_split(char const *s, char c)
 			i++;
 		if (s[i] != '\0' && !ft_sep(s[i], c))
 			dest[len++] = ft_dup((char *)(s + i), c);
+		else
+		{
+			ft_free(dest, i);
+			return (0);
+		}
 		while (s[i] != '\0' && !ft_sep(s[i], c))
 			i++;
 	}
 	dest[len] = 0;
 	return (dest);
 }
-
+/*
 int     main(void)
 {
         char    **dest;
@@ -107,4 +111,4 @@ int     main(void)
         while (dest[i])
                 printf("%s\n", dest[i++]);
 	return (0);
-}
+}*/
